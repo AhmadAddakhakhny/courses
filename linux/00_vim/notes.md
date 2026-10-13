@@ -36,6 +36,8 @@
 - delete N lines -> current and N-above (NM: d3k)
 - delete from midle of the line till the end (NM: d$)
 - delete from midle of the line till the front (NM: d0)
+
+- undo everything since the file got opened first time (:e!)
 ```
 
 
@@ -58,4 +60,27 @@
 - search after the curser (NM: /search_word + enter)
 - search before the curser (NM: ?search_word + enter)
 - to navigate the matched words use next (NM: n or N) front or back
+```
+
+## VIM Modes
+```vim
+#1 insert mode
+1. (IM: i) enter insert mode, start writing before the curser
+2. (IM: a) enter insert mode, start writing after the curser (logically more used)
+
+#2 command mode
+- (CM: :) enter Command Mode
+- exit without save (:q!)
+- exit  and save (:x)
+- show line numbers (:set number)
+
+#3 visual mode
+1. visual block (NM: ctrl+v -VM block)
+2. visual line (NM: shift+v -> VM line)
+```
+
+## .vimrc configs
+> any command runs temporary, better store vim configs in .vimrc
+```vim
+set number
 ```
