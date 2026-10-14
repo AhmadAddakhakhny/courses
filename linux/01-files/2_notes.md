@@ -67,3 +67,18 @@ ls hi > file.txt 2> file-err.txt # redirect to two files
 ls hi 2> /dev/null
 ```
 ---
+## Files - Compare and search for Files
+> there are two main commands to check two files against each other "cmp, diff"
+```bash
+# cmp: common usage is to check whether the file got changed or not.
+# diff: use it for your own visualization (not inside scripts) just in the beginning.
+
+cmp file.txt file2.txt # if no change return nothing, otherwise return info-string with bytes.
+
+diff file.txt file2.txt # if no change return nothing,otherwise return human readable diff.
+
+diff -c file.txt file2.txt # same with more context
+
+diff -y file.txt file2.txt # side by side view, best optio so far
+```
+
