@@ -42,4 +42,24 @@ grep -oE "regex-rule" | sort | uniq
 grep -oP "regex-rult" sudo_logsrvd.conf
 - P: use perl regular expression, perl is very advanced in regex
 ```
+## Files - sed (stream editor)
+> transforming the input stream
+```bash
+# sed changes take place only if you passed (-i) option
+# without '-i' you will see the change on the terminal only.
+# you can do different things with the command
+
+# 1. text replacement
+# sed -i "s/regex|word/replacement/" file-name
+# sed -iE "s/extended-regex/replacement/" file-name
+
+# 2. print specific line
+sed -n '20p' file.txt # p for print
+sed -n '9,12p' file.txt # print from line 9 to 12
+sed -n '9p;12p' file.txt # print line 9 and 12
+
+# 3. delete
+sed -i '/deleted-word/d' file.txt
+sed -i '6d' file.txt # delete line number 6
+```
 
