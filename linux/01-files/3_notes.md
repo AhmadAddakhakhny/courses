@@ -51,6 +51,7 @@ grep -oP "regex-rult" sudo_logsrvd.conf
 
 # 1. text replacement
 # sed -i "s/regex|word/replacement/" file-name
+# sed -i "s/regex|word/replacement/g" file-name # g: change all similar words
 # sed -iE "s/extended-regex/replacement/" file-name
 
 # 2. print specific line
@@ -61,5 +62,35 @@ sed -n '9p;12p' file.txt # print line 9 and 12
 # 3. delete
 sed -i '/deleted-word/d' file.txt
 sed -i '6d' file.txt # delete line number 6
+
+# 4. performe backup before applying the changes
+sed -i.bak "s/ubuntu/void/g" file.txt # file.txt.bak is created
+```
+## Files - Hard and Soft Links
+```bash
+# it's a way of doing shortcuts
+
+# 1. hard link
+ln file.txt file-hard.txt
+ln dir1 dir2 # ERROR!
+## note:
+# a. both files would have the same inode number # ls -i
+# the only possible way to know if the two files are hard-link-ed
+# through the inode, and ls -l won't highlight that.
+# b. thus, hard link is only possible in the same partition
+# c. hard link not allowed for directory
+# d. removing the original file, won't affect the linked file. (it's kind of a dublicate file)
+
+# 2. soft link
+ln -s file.txt file-soft.txt
+ln -s dir1 dir2
+## notes:
+# a. both files have different inodes
+# b. ls -l should symbolically the link between the two files
+# c. short link is possible for directory
+# d. possible to be used among different partitions
+# e. how removing the original file affect the linked file? be broken.
+rm file.txt
+# file-soft.txt is broken and should be deleted as well.
 ```
 
